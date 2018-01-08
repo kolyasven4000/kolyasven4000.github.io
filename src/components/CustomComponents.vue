@@ -2,17 +2,18 @@
 <div class="components">
     <div class="close-btn"
          @click="closeComponent"
-         v-if="curComponent"></div>
+         v-if="curComponent && !crossHidden"></div>
     <div class="components__preview"
          @click="renderComponent(component)"
          v-for="(component, index) in content"></div>
-    <transition name="modal">
+    <transition name="entry">
         <div class="components__content"
              v-if="curComponent">
             <div class="components__layout"
                  @click="closeComponent"></div>
             <component class="components__component"
                        :is="curComponent"
+                       @hideCross="hideCross"
                        @goBack="closeComponent"></component>
         </div>
     </transition>
@@ -52,7 +53,8 @@ export default {
     data() {
         return {
             content: null,
-            curComponent: null
+            curComponent: null,
+            crossHidden: false
         };
     },
     created() {
@@ -67,9 +69,13 @@ export default {
     methods: {
         renderComponent(e) {
             this.curComponent = e;
+            if(!this.crossHidden) this.crossHidden = false;
         },
         closeComponent() {
             this.curComponent = null;
+        },
+        hideCross() {
+            this.crossHidden = true
         }
     }
 
@@ -77,7 +83,7 @@ export default {
 
 </script>
 
-<style scoped="" lang="scss">
+<style scoped lang="scss">
 .components {
     display: flex;
     height: inherit;
@@ -115,13 +121,13 @@ export default {
     }
 }
 
-.modal-enter-active,
-.modal-leave-active {
+.entry-enter-active,
+.entry-leave-active {
     //transition: opacity .5s
 }
 
-.modal-enter,
-.modal-leave-active {
+.entry-enter,
+.entry-leave-active {
     opacity: 0;
 }
 </style>
@@ -151,6 +157,10 @@ export default {
     &:hover,
     &:active {
         background: #F6AC32;
+    }
+    &--disabled {
+            filter: grayscale(100%);
+    pointer-events: none;
     }
     &--reverse {
         border: 1px solid #33B370;

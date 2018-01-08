@@ -31,10 +31,10 @@
              :disabled="!isAllSelected"
              @click="checkEx">Принять ответ</div>
     </div>
-    <!-- <transition name="modal">
-        <div class="course-modal"
+     <transition name="modal">
+        <div class="text-adder__modal"
              v-if="modalShowed">
-            <div class="course-modal__body">
+            <div class="text-adder__modal-body">
                 <div class="close-btn close-btn--out"
                      @click="switchModal"></div>
                 <div class="text-adder__btn default-btn"
@@ -46,37 +46,37 @@
                 </div>
             </div>
         </div>
-    </transition> -->
-    <modal
-            animName="fade"
-            v-if="modalShowed"
-            @closeModal = "switchModal"
-            :showModal = "modalShowed"
-            width="580"
-            height="200">
-             <div class="close-btn close-btn--out"
-                     @click="switchModal"></div>
-            <p slot='modal-header' class="notes-modal__title">Вы действительно хотите удалить вопрос:</p>
-            <p slot='modal-content' class="notes-modal__text" :class="{'active': answer.right && magic}"
-                     @click="setAnswer(answer)"
-                     v-for="answer, i in currentElem.answers"
-                     :key="i">{{answer.text}}</p>
+    </transition>
 
-        </modal>
+    <transition name="modal">
+        <div class="text-adder__modal "
+             v-if="finalShowed">
+            <div class="text-adder__modal-body" 
+            :class="isCorrected ? 'good': 'bad'">
+                 <div class="text-adder__modal-title" v-if="isCorrected">Вы правы</div>
+                  <div class="text-adder__modal-title" v-else>Вы ошиблись</div>
+
+                        <div class="default-btn"
+                         @click="$emit('goBack')" v-if="isCorrected">Продолжить</div>
+                         <div class="default-btn"
+                         @click="init" v-else>Повторить</div>
+
+            </div>
+        </div>
+    </transition>
+
 </div>
 
 </template>
 
 <script>
-import modal from './default-modal.vue';
 export default {
-    components:{
-            modal
-        },
+    
     data() {
         return {
             collection: [],
             modalShowed: false,
+            finalShowed: false,
             currentElem: null,
             content: {
                 text: 'Клиент позвонил в контактный центр и попросил скорректировать паспортные данные на актуальные. Заполните пропуски в тексте так, чтобы ответ получился гармоничным и соответствовал простому и&nbsp;эффективному стилю. Для этого нажимайте на пустую область и выбирайте варианты.',
@@ -193,9 +193,10 @@ export default {
     },
     methods: {
         checkEx() {
-            this.$emit('endStep', this.isCorrected);
+            this.finalShowed = true;
         },
         init() {
+            this.finalShowed= false;
             this.collection = this.content.collection.map((el, ind) => el.map((subEl, subInd) => {
                 const mergeObj = {
                     passed: false,
@@ -211,6 +212,7 @@ export default {
             this.switchModal();
         },
         switchModal() {
+            this.$emit('hideCross');
             this.modalShowed = !this.modalShowed;
         },
         setAnswer(answer) {
@@ -246,7 +248,7 @@ export default {
 }
 </style>
 
-<style lang="scss" scoped="">
+<style lang="scss" scoped>
 .text-adder {
     background: white;
     width: 100%;
@@ -307,7 +309,7 @@ export default {
         cursor: pointer;
         &.active {
             display: inline;
-            line-height: 22px;
+            line-height: 23px;
             min-width: auto;
         }
     }
@@ -339,11 +341,59 @@ export default {
             margin-top: 32px;
         }
     }
+
+    &__modal {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        background-color: rgba(193, 199, 203, 0.7);
+            z-index: 11;
+            transition: opacity .3s ease;
+
+     
+   
+}
+&__modal-title {
+     margin-bottom: 20px;
+        font-size: 18px;
+        font-weight: bold;
+        .text-adder__modal-body.good & {
+            color: #27a221;
+        }
+        .text-adder__modal-body.bad & {
+            color: #f55656;
+        }
+
+}
+&__modal-body {
+        position: absolute;
+           top: 59px;
+        left: 50%;
+        transform: translateX(-50%);
+        height: auto;
+            width: auto;
+        padding: 32px;
+        background-color: white;
+        transition: transform .3s;
+    }
+
     .exercise__btns-wrap {
         margin-top: 20px;
     }
-    .course-modal__body {
-        width: 610px;
-    }
+   
+}
+.modal-enter {
+  opacity: 0;
+}
+
+.modal-leave-active {
+  opacity: 0;
+}
+
+.modal-enter .text-adder__modal-body {
+  transform: scale(1.1) translateX(-50%);
 }
 </style>

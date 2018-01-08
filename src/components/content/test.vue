@@ -323,6 +323,7 @@ export default {
 
 
   .case-content{
+    position: relative;
   padding: 20px 80px 20px 40px;
   max-width: 1000px;
   font-size: 17px;
