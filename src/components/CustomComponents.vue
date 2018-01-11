@@ -3,9 +3,12 @@
     <div class="close-btn"
          @click="closeComponent"
          v-if="curComponent && !crossHidden"></div>
+         <transition-group name="flip-list"  tag="div" class="components__wrapper">
     <div class="components__preview"
          @click="renderComponent(component)"
-         v-for="(component, index) in content"></div>
+         v-for="(component, index) in content" :key="component">{{component}}</div>
+     </transition-group>
+     
     <transition name="entry">
         <div class="components__content"
              v-if="curComponent">
@@ -33,7 +36,7 @@ import modalPage from './content/modalPage.vue';
 import soundManager from './content/soundManager.vue';
 import test from './content/test.vue';
 import textAdder from './content/textAdder.vue';
-const componentsList = {
+let componentsList = {
     videoWrapper,
     glossaryPage,
     notesPage,
@@ -59,9 +62,12 @@ export default {
     },
     created() {
 
-        this.content = componentsList;
+        this.content = Object.keys(componentsList);
     },
-    mounted() {},
+    mounted() {
+        this.content = this.shuffle(this.content)
+        
+    },
     computed: {
 
     },
@@ -75,7 +81,14 @@ export default {
             this.curComponent = null;
         },
         hideCross() {
-            this.crossHidden = true
+            this.crossHidden = true;
+        },
+         shuffle(a) {
+            for (let i = a.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
         }
     }
 
@@ -85,16 +98,28 @@ export default {
 
 <style scoped lang="scss">
 .components {
-    display: flex;
+    height: 100vh;
+    &__wrapper {
+         display: flex;
     height: inherit;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
+    max-width: 968px;
+    margin: 0 auto;
+    }
     &__preview {
         display: inline-block;
         height: 200px;
         width: 200px;
-        background: red;
+        background-color: rgba(0,0,0, .4);
+        cursor: pointer;
+        font-size: 25px;
+        line-height: 200px;
+        font-weight: bold;
+        color: white;
+        text-align: center;
+        letter-spacing: .3px;
     }
     &__content {
         position: absolute;
@@ -129,6 +154,9 @@ export default {
 .entry-enter,
 .entry-leave-active {
     opacity: 0;
+}
+.flip-list-move {
+  transition: transform 1s;
 }
 </style>
 

@@ -10,7 +10,7 @@
 </template>
 <script>
 	export default {
-		name: 'pdf-player',
+		name: 'pdfPlayer',
 		props: {
         	context: {
 	            type: Object,
