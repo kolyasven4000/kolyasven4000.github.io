@@ -255,4 +255,8 @@ export default {
 .ex-feedback-incorrect{
   color: #E09990;
 }
+.default-btn {
+  position: initial;
+  transform: none;
+}
 </style>

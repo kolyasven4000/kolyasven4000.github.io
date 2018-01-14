@@ -231,7 +231,6 @@ export default {
 .text-adder {
     h3,
     p {
-        font-family: 'ProximaNova';
         font-size: 16px;
         line-height: 22px;
         color: #444649;
@@ -290,7 +289,6 @@ export default {
     }
     &__sub {
         margin-bottom: 32px;
-        font-family: 'ProximaNova';
         font-size: 16px;
         line-height: 22px;
         font-weight: normal;

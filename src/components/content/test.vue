@@ -7,7 +7,7 @@
       <br>
       Вас ждут вопросы, на которые Вам предстоит ответить правильно.</div>
       <div class="case-intro__alert">Задание считается пройденным успешно, если Вы справились с ним<br>не менее чем на 80 %. У Вас неограниченное количество попыток.</div>
-      <div class="default-btn" @click="toggleTest">Приступить</div>
+      <div class="case-intro__btn default-btn" @click="toggleTest">Приступить</div>
     </div>
     <div class="case-content" v-if="testStarted">
       <!-- <div class="close-btn" @click="toggleTest"></div> -->
@@ -294,7 +294,10 @@ export default {
       font-weight: bold;
     }
   }
-
+  &__btn {
+    position: initial;
+    transform: none;
+  }
   &__alert {
     margin-top: 40px;
     font-weight: 100;
@@ -423,112 +426,11 @@ export default {
  	float: left;
  }
 
- .questphoto-container .ex-question-answer{
- 	background-color: #aaf07f;
- 	margin-left: 0;
- 	border: none;
- }
- .questphoto-container .ex-question-answer:active,
- .questphoto-container .ex-question-answer--selected,
- .questphoto-container .ex-question-answer--correct.ex-question-answer--selected{
- 	background-color: #ffac53;
+ .default-btn {
+  position: initial;
+    transform: none;
  }
 
- .questphoto-container .ex-question-answer::before{
- 	display: none;
- }
- .questphoto-container .ex-question-answer--correct{
-	border: 2px solid green;
-	background-color: #49b76b;
-	color: #fff;
-}
-
- .ex-question-pic{
- 	width: 300px;
- 	height: 357px;
- 	background-color: #aaf07f;
- 	float: right;
-  	box-shadow: 0px 20px 30px 0px rgba(71, 63, 51, 0.44);
- }
-
-
- .br-clear{
- 	clear: both;
- 	height: 0;
- }
-
-
- .exercice__shoelace {
-  width: 100%;
-}
-
-.exercice__lists {
-  width: 660px;
-}
-
-.exercice__lists--query {
-  font-size: 22px;
-  font-weight: 300;
-  color: black;
-  margin-bottom: 25px;
-}
-
-.exercice__shoelace .exercice__lists--query {
-  margin-bottom: 15px;
-}
-
-.test--card--lists {
-  padding: 25px 40px;
-}
-
-.exercice__rows {
-  position: relative;
-  height: 450px;
-}
-
-.exercice__shoelace--hint,
-.exercice__lists--hint {
-  position: absolute;
-  left: 449px;
-  top: 97px;
-  padding: 20px;
-  border-radius: 15px;
-  background-color: #565c63;
-  box-shadow: 0px 10px 20px 0px rgba(51, 64, 71, 0.36);
-  width: 304px;
-  z-index: 15;
-  font-size: 16px;
-  color: #ffc19c;
-  font-weight: 300;
-  font-style: italic;
-}
-.exercice__shoelace--hint:after,
-.exercice__lists--hint:after {
-  content: "";
-  width: 30px;
-  height: 30px;
-  transform: rotate(45deg) translate(-50%, -50%);
-  position: absolute;
-  right: 45%;
-  top: 8px;
-  background-color: #565c63;
-  z-index: 14;
-}
-
-.exercice__row {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  position: relative;
-  background-color: #fff;
-}
-
-.exercice__cell {
-  width: 49%;
-  padding: 15px 20px;
-  display: inline-block;
-  position: relative;
-  height: auto;
-  background-color: #fff;
-}
 
 .exercice__variants {
   width: 51%;
@@ -543,12 +445,7 @@ export default {
   overflow: hidden;
   transition: .3s;
 }
-.exercice__variants.exercice__variants--open {
-  border-top: 2px solid #ff8f16;
-  height: auto;
-  box-shadow: 0px 10px 20px 0px rgba(101, 60, 11, 0.31);
-  z-index: 10;
-}
+
 
 .exercice__variant {
   width: 100%;
@@ -562,34 +459,6 @@ export default {
   background-color: #ffac53;
 }
 
-.exercice__variant--selected {
-  text-align: center;
-}
-
-
-
-.exercice__variants--icon {
-  position: absolute;
-  right: 0px;
-  top: 20px;
-  width: 18px;
-  height: 14px;
-  background-color: #fff;
-}
-
-.exercice__variants--icon span {
-  width: 18px;
-  height: 2px;
-  background-color: #85d454;
-  display: block;
-  margin-bottom: 2px;
-  margin-top: 2px;
-}
-
-.exercice__variants--icon.open span {
-  background-color: #ff8f16;
-}
--feedback-correct,
 .ex-feedback-incorrect{
 	position: absolute;
     left: 250px;

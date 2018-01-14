@@ -170,7 +170,6 @@ export default {
     height: 48px;
     padding: 0 33px;
     border-radius: 10px;
-    font-family: 'ProximaNova';
     font-size: 18px;
     line-height: 48px;
     font-weight: bold;
