@@ -99,6 +99,7 @@ export default {
 <style scoped lang="scss">
 .components {
     height: 100vh;
+    background: linear-gradient(to bottom right, blue, pink);
     &__wrapper {
          display: flex;
     height: inherit;
