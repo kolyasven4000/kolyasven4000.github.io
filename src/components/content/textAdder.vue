@@ -3,35 +3,33 @@
     <div class="text-adder__question"
          v-html="content.text"></div>
     <div class="text-adder__sub">{{content.textSub}}</div>
-    
-        <div class="text-adder__inner">
-            <div class="text-adder__item-wrap"
-                 v-for="items,ind in collection">
-                <div class="text-adder__item"
-                     v-for="item,subInd in items">
-                    <div class="text-adder__text"
-                         v-html="item.textPrev"
-                         v-if="item.textPrev"></div>
-                    <div class="text-adder__interactive"
-                         :class="{'active': item.selected}"
-                         @click="setCurrentElem(ind, subInd)">{{item.selected}}
-                        <div class="add-btn text-adder__add-btn"
-                             v-if="!item.selected"></div>
-                    </div>
-                    <div class="text-adder__text"
-                         v-html="item.textNext"
-                         v-if="item.textNext"></div>
+    <div class="text-adder__inner">
+        <div class="text-adder__item-wrap"
+             v-for="items,ind in collection">
+            <div class="text-adder__item"
+                 v-for="item,subInd in items">
+                <div class="text-adder__text"
+                     v-html="item.textPrev"
+                     v-if="item.textPrev"></div>
+                <div class="text-adder__interactive"
+                     :class="{'active': item.selected}"
+                     @click="setCurrentElem(ind, subInd)">{{item.selected}}
+                    <div class="add-btn text-adder__add-btn"
+                         v-if="!item.selected"></div>
                 </div>
+                <div class="text-adder__text"
+                     v-html="item.textNext"
+                     v-if="item.textNext"></div>
             </div>
         </div>
-   
+    </div>
     <div class="exercise__btns-wrap">
         <div class="default-btn test__btn"
              :class="{'default-btn--disabled' : !isAllSelected}"
              :disabled="!isAllSelected"
              @click="checkEx">Принять ответ</div>
     </div>
-     <transition name="modal">
+    <transition name="modal">
         <div class="text-adder__modal"
              v-if="modalShowed">
             <div class="text-adder__modal-body">
@@ -47,31 +45,31 @@
             </div>
         </div>
     </transition>
-
     <transition name="modal">
         <div class="text-adder__modal "
              v-if="finalShowed">
-            <div class="text-adder__modal-body" 
-            :class="isCorrected ? 'good': 'bad'">
-                 <div class="text-adder__modal-title" v-if="isCorrected">Вы правы</div>
-                  <div class="text-adder__modal-title" v-else>Вы ошиблись</div>
-
-                        <div class="default-btn"
-                         @click="$emit('goBack')" v-if="isCorrected">Продолжить</div>
-                         <div class="default-btn"
-                         @click="init" v-else>Повторить</div>
-
+            <div class="text-adder__modal-body"
+                 :class="isCorrected ? 'good': 'bad'">
+                <div class="text-adder__modal-title"
+                     v-if="isCorrected">Вы правы</div>
+                <div class="text-adder__modal-title"
+                     v-else>Вы ошиблись</div>
+                <div class="default-btn"
+                     @click="$emit('goBack')"
+                     v-if="isCorrected">Продолжить</div>
+                <div class="default-btn"
+                     @click="init"
+                     v-else>Повторить</div>
             </div>
         </div>
     </transition>
-
 </div>
 
 </template>
 
 <script>
 export default {
-    name: "textAdder",
+    name: 'textAdder',
     data() {
         return {
             collection: [],
@@ -174,7 +172,7 @@ export default {
                     ]
                 ]
             }
-        }
+        };
     },
     created() {
         this.init();
@@ -196,7 +194,7 @@ export default {
             this.finalShowed = true;
         },
         init() {
-            this.finalShowed= false;
+            this.finalShowed = false;
             this.collection = this.content.collection.map((el, ind) => el.map((subEl, subInd) => {
                 const mergeObj = {
                     passed: false,
@@ -247,7 +245,7 @@ export default {
 }
 </style>
 
-<style lang="scss" scoped>
+<style lang="scss" scoped="">
 .text-adder {
     background: white;
     width: 100%;
@@ -282,8 +280,7 @@ export default {
             left: -36px;
             top: 0;
             width: calc(100% + 80px);
-            height: 100%;
-            //background: url(../img/exercise/text-adder/quest-bg.png) no-repeat left;
+            height: 100%; //background: url(../img/exercise/text-adder/quest-bg.png) no-repeat left;
             background-size: contain;
         }
     }
@@ -339,7 +336,6 @@ export default {
             margin-top: 32px;
         }
     }
-
     &__modal {
         position: fixed;
         left: 50%;
@@ -348,14 +344,11 @@ export default {
         width: 100%;
         height: 100%;
         background-color: rgba(193, 199, 203, 0.7);
-            z-index: 11;
-            transition: opacity .3s ease;
-
-     
-   
-}
-&__modal-title {
-     margin-bottom: 20px;
+        z-index: 11;
+        transition: opacity .3s ease;
+    }
+    &__modal-title {
+        margin-bottom: 20px;
         font-size: 18px;
         font-weight: bold;
         .text-adder__modal-body.good & {
@@ -364,34 +357,32 @@ export default {
         .text-adder__modal-body.bad & {
             color: #f55656;
         }
-
-}
-&__modal-body {
+    }
+    &__modal-body {
         position: absolute;
-           top: 59px;
+        top: 59px;
         left: 50%;
         transform: translateX(-50%);
         height: auto;
-            width: auto;
+        width: auto;
         padding: 32px;
         background-color: white;
         transition: transform .3s;
     }
-
     .exercise__btns-wrap {
         margin-top: 20px;
     }
-   
 }
+
 .modal-enter {
-  opacity: 0;
+    opacity: 0;
 }
 
 .modal-leave-active {
-  opacity: 0;
+    opacity: 0;
 }
 
 .modal-enter .text-adder__modal-body {
-  transform: scale(1.1) translateX(-50%);
+    transform: scale(1.1) translateX(-50%);
 }
 </style>

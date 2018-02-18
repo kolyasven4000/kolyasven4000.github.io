@@ -3,12 +3,14 @@
     <div class="close-btn"
          @click="closeComponent"
          v-if="curComponent && !crossHidden"></div>
-         <transition-group name="flip-list"  tag="div" class="components__wrapper">
-    <div class="components__preview"
-         @click="renderComponent(component)"
-         v-for="(component, index) in content" :key="component">{{component}}</div>
-     </transition-group>
-     
+    <transition-group name="flip-list"
+                      tag="div"
+                      class="components__wrapper">
+        <div class="components__preview"
+             @click="renderComponent(component)"
+             v-for="(component, index) in content"
+             :key="component">{{component}}</div>
+    </transition-group>
     <transition name="entry">
         <div class="components__content"
              v-if="curComponent">
@@ -65,30 +67,26 @@ export default {
         this.content = Object.keys(componentsList);
     },
     mounted() {
-        this.content = this.shuffle(this.content)
-        
+        this.content = _.shuffle(this.content);
+
     },
     computed: {
 
     },
 
     methods: {
+
         renderComponent(e) {
             this.curComponent = e;
-            if(!this.crossHidden) this.crossHidden = false;
+            if (!this.crossHidden) {
+                this.crossHidden = false;
+            }
         },
         closeComponent() {
             this.curComponent = null;
         },
         hideCross() {
             this.crossHidden = true;
-        },
-         shuffle(a) {
-            for (let i = a.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [a[i], a[j]] = [a[j], a[i]];
-            }
-            return a;
         }
     }
 
@@ -96,24 +94,24 @@ export default {
 
 </script>
 
-<style scoped lang="scss">
+<style scoped="" lang="scss">
 .components {
     height: 100vh;
     background: linear-gradient(to bottom right, blue, pink);
     &__wrapper {
-         display: flex;
-    height: inherit;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    max-width: 968px;
-    margin: 0 auto;
+        display: flex;
+        height: inherit;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        max-width: 968px;
+        margin: 0 auto;
     }
     &__preview {
         display: inline-block;
         height: 200px;
         width: 200px;
-        background-color: rgba(0,0,0, .4);
+        background-color: rgba(0, 0, 0, .4);
         cursor: pointer;
         font-size: 25px;
         line-height: 200px;
@@ -156,8 +154,9 @@ export default {
 .entry-leave-active {
     opacity: 0;
 }
+
 .flip-list-move {
-  transition: transform 1s;
+    transition: transform 1s;
 }
 </style>
 
@@ -187,8 +186,8 @@ export default {
         background: #F6AC32;
     }
     &--disabled {
-            filter: grayscale(100%);
-    pointer-events: none;
+        filter: grayscale(100%);
+        pointer-events: none;
     }
     &--reverse {
         border: 1px solid #33B370;
