@@ -2,7 +2,7 @@
 	<div class="component">
             <videoplayer 
                 autoplay
-                src="/static/cap.mp4"
+                src="static/cap.mp4"
                 @ended="ended" 
                 @goBack="goBack">
              </videoplayer>

@@ -225,7 +225,7 @@ export default {
         transform: translate(-50%, -50%);
         width: 15px;
         height: 15px;
-        background: url(/static/img/buttons/plus.svg) center no-repeat;
+        background: url(~assets//img/buttons/plus.svg) center no-repeat;
         background-size: cover;
     }
 }
@@ -257,7 +257,7 @@ export default {
         transform: translate(-50%, -50%);
         width: 12px;
         height: 12px;
-        background: url('/static/img/buttons/close.png') center no-repeat;
+        background: url('~assets/img/buttons/close.png') center no-repeat;
         background-size: contain;
     }
     &:hover,
