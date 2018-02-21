@@ -18,7 +18,7 @@
                  @click="closeComponent"></div>
             <component class="components__component"
                        :is="curComponent"
-                       @hideCross="hideCross"
+                       @switchCross="switchCross"
                        @goBack="closeComponent"></component>
         </div>
     </transition>
@@ -85,8 +85,8 @@ export default {
         closeComponent() {
             this.curComponent = null;
         },
-        hideCross() {
-            this.crossHidden = true;
+        switchCross() {
+            this.crossHidden = !this.crossHidden;
         }
     }
 
@@ -225,7 +225,7 @@ export default {
         transform: translate(-50%, -50%);
         width: 15px;
         height: 15px;
-        background: url(~assets//img/buttons/plus.svg) center no-repeat;
+        background: url(~img/buttons/plus.svg) center no-repeat;
         background-size: cover;
     }
 }
@@ -257,7 +257,7 @@ export default {
         transform: translate(-50%, -50%);
         width: 12px;
         height: 12px;
-        background: url('~assets/img/buttons/close.png') center no-repeat;
+        background: url('~img/buttons/close.png') center no-repeat;
         background-size: contain;
     }
     &:hover,

@@ -509,13 +509,13 @@ export default {
             width: 19px;
             height: 18px;
             right: 20px;
-            background-image: url("~assets/img/videoplayer/btn-zoom.svg");
+            background-image: url("~img/videoplayer/btn-zoom.svg");
         }
         .btn-sound {
             transform: translateY(-50%);
             &.mute {
                 .btn-volume {
-                    background-image: url("~assets/img/videoplayer/btn-mute.svg");
+                    background-image: url("~img/videoplayer/btn-mute.svg");
                 }
                 .volume-bar__current {
                     width: 0%;
@@ -527,7 +527,7 @@ export default {
             width: 25px;
             height: 22px;
             left: -35px;
-            background-image: url("~assets/img/videoplayer/btn-volume.svg");
+            background-image: url("~img/videoplayer/btn-volume.svg");
         }
         .volume-bar-wrapper {
             width: 65px;
@@ -580,7 +580,7 @@ export default {
             left: 67px;
             width: 16px;
             height: 17px;
-            background-image: url("~assets/img/videoplayer/btn-play.svg");
+            background-image: url("~img/videoplayer/btn-play.svg");
         }
         .btn-prev,
         .btn-next {
@@ -588,7 +588,7 @@ export default {
             height: 15px;
         }
         .btn-prev {
-            background-image: url("~assets/img/videoplayer/btn-next.svg");
+            background-image: url("~img/videoplayer/btn-next.svg");
             transform: rotate(-180deg);
             left: 20px;
             transform-origin: center 4px;
@@ -596,14 +596,14 @@ export default {
         .btn-next {
             transform: translateY(-50%);
             left: 105px;
-            background-image: url("~assets/img/videoplayer/btn-next.svg");
+            background-image: url("~img/videoplayer/btn-next.svg");
         }
         .btn-pause {
             transform: translateY(-50%);
             left: 67px;
             width: 16px;
             height: 18px;
-            background-image: url("~assets/img/videoplayer/btn-pause.svg");
+            background-image: url("~img/videoplayer/btn-pause.svg");
         }
         .btn {
             background-repeat: no-repeat;

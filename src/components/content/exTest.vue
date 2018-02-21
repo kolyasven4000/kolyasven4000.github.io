@@ -210,32 +210,32 @@ export default {
     left: -50px;
     top: calc(50%);
     transform: translateY(-50%);
-    background-image: url('~assets/img/test/oim-normal.png');
+    background-image: url('~img/test/oim-normal.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .ex-question-answer:hover::before {
-  background-image: url('~assets/img/test/oim-over.png');
+  background-image: url('~img/test/oim-over.png');
 }
 
 .ex-question-answer--selected::before,
 .ex-question-answer--selected:hover::before {
-  background-image: url('~assets/img/test/oim-selected.png');
+  background-image: url('~img/test/oim-selected.png');
 }
 
 .ex-question-answer--checkbox:before{
-    background-image: url('~assets/img/test/mim-normal.png');
+    background-image: url('~img/test/mim-normal.png');
 }
 
 .ex-question-answer--checkbox:hover::before {
-  background-image: url('~assets/img/test/mim-over.png');
+  background-image: url('~img/test/mim-over.png');
 }
 
 .ex-question-answer--checkbox.ex-question-answer--selected {
     &:before,
     &:hover:before{
-      background-image: url('~assets/img/test/mim-selected.png');
+      background-image: url('~img/test/mim-selected.png');
     }
 }
 .ex-question-answer--correct{

@@ -263,11 +263,11 @@ export default {
         width: 174px;
         height: 174px;
         &.bad {
-            background: url('~assets/img/test/icon_bad.png') center no-repeat;
+            background: url('~img/test/icon_bad.png') center no-repeat;
             background-size: cover;
         }
         &.good {
-            background: url('~assets/img/test/icon_good.png') center no-repeat;
+            background: url('~img/test/icon_good.png') center no-repeat;
             background-size: cover;
         }
     }
@@ -333,7 +333,7 @@ export default {
     font: 18px;
     font-weight: bold;
     color: #444649;
-    background: url('~assets/img/test/splash.png') left no-repeat;
+    background: url('~img/test/splash.png') left no-repeat;
     background-size: 100% 100%;
     max-width: 696px;
     strong {
@@ -393,7 +393,7 @@ export default {
     left: -50px;
     top: calc(50%);
     transform: translateY(-50%);
-    background-image: url('~assets/img/test/oim-normal.png');
+    background-image: url('~img/test/oim-normal.png');
 }
 
 .ex-question-answer:active::before {
@@ -401,13 +401,13 @@ export default {
 }
 
 .ex-question-answer--selected:active::before {
-    background-image: url('~assets/img/test/oim-normal.png');
+    background-image: url('~img/test/oim-normal.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .ex-question-answer--selected::before {
-    background-image: url('~assets/img/test/oim-selected.png');
+    background-image: url('~img/test/oim-selected.png');
     background-repeat: no-repeat;
     background-position: center;
 }
