@@ -98,6 +98,8 @@ export default {
 .components {
     height: 100vh;
     background: linear-gradient(to bottom right, blue, pink);
+    font-family: 'ChalkboardSE';
+    font-weight: normal;
     &__wrapper {
         display: flex;
         height: inherit;
